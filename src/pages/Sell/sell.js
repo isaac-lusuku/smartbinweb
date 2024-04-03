@@ -14,17 +14,17 @@ const Sell = () => {
                 <div>
                     <img
                     className="w-80 rounded-lg p-4 mx-auto"
-                    src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxGl4CWJAQoOoZMscmR6jgZpNwTWEqDD6TLPX4HuHRh2O03VkSAf-UdYZTG9j02cZv3OU&usqp=CAU"}
+                    src={"https://st3.depositphotos.com/18826394/34650/v/450/depositphotos_346509240-stock-illustration-sad-sorry-face-expression-cup.jpg"}
                     alt="emptyCart"
                     />
                 </div>
                 <div className="max-w-[500px] p-4 py-8 bg-white flex gap-4 flex-col items-center rounded-md shadow-lg">
                     <h1 className="font-titleFont text-xl font-bold uppercase">
-                    You are currently not LOGGED IN
+                    the sell feature NOT AVAILABLE YET
                     </h1>
                     <p className="text-sm text-center px-10 -mt-2">
-                    You are currently logged out of your account OR you do nothave an account 
-                    continue to log in page or signup to access lots of features
+                    We are sorry to inform you dear estimed customer that the sell feture is still
+                    in development and shall be coming soon... we shall send you an email on its arrival
                     </p>
                     <Link to="/signin">
                     <button className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
