@@ -43,11 +43,6 @@ export const navBarList = [
     link: "/about",
   },
   {
-    _id: 1004,
-    title: "Contact",
-    link: "contact",
-  },
-  {
     _id: 1005,
     title: "Sell",
     link: "/sell",
@@ -59,6 +54,7 @@ export const SampleData = [
   {
     _id: "201",
     img: iphone_14,
+    productName: "iphone 14",
     price: "3500000",
     color: "Blank and White",
     badge: true,
@@ -128,6 +124,7 @@ export const SampleData = [
   {
     _id: "208",
     img: sweater,
+    productName: "sweater",
     price: "50000",
     color: "Black",
     badge: true,

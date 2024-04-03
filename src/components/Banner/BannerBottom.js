@@ -3,7 +3,7 @@ import React from "react";
 
 const BannerBottom = () => {
   return (
-    <div className="w-full bg-white border-b-[1px] py-4 border-b-gray-200 px-4">
+    <div  data-testid="banner-bottom" className="w-full bg-white border-b-[1px] py-4 border-b-gray-200 px-4">
       <div className="w-10/12 mx-auto h-20 flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center justify-center gap-4 w-72 shadow-sm hover:shadow-md duration-300">
           <span className="font-bold font-titleFont w-6 text-center">

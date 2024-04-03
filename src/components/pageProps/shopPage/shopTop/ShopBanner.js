@@ -9,8 +9,8 @@ const customStyles = {
     backgroundColor: "rgba(0, 0, 0, 0.9)", 
 }
 
-const heading = "Start selling with US".split(" ")
-const semiheading = "the PRODUCTS below are from PARTNERS selling with US".split(" ")
+const heading = "Start selling with Shoplife".split(" ")
+const semiheading = "the PRODUCTS below are from PARTNERS selling with Shoplife".split(" ")
 const text = "Unlock the potential of your products with our online platform! Reach a global audience, boost your sales, and connect with customers like never before. Join us today and let your products shine in the digital marketplace! start selling with us TODAY".split(" ")
 
 const ShopBanner = () =>{

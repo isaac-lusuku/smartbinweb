@@ -31,12 +31,12 @@ const HeaderBottom = () => {
     setSearchQuery(e.target.value);
   };
 
-  // useEffect(() => {
-  //   const filtered = SampleData.filter((item) =>
-  //     item.productName.toLowerCase().includes(searchQuery.toLowerCase())
-  //   );
-  //   setFilteredProducts(filtered);
-  // }, [searchQuery]);
+  useEffect(() => {
+    const filtered = SampleData.filter((item) =>
+      item.productName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [searchQuery]);
 
   return (
     <div className="w-full bg-[#F5F5F3] relative bg-opacity-0">

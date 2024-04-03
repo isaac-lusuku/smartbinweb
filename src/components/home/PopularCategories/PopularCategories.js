@@ -43,7 +43,7 @@ const categories = [
 ]
 
 const PopularCategories = () =>{
-    return (<div className="h-screen sm:h-[40vh] flex-col mt-12">
+    return (<div data-testid="popular-categories" className="h-screen sm:h-[40vh] flex-col mt-12">
         <div className="flex justify-between h-1/6 items-center">
             <div className="flex gap-1 ml-20 text-2xl font-semibold">
                  <CgMenuGridO className="text-3xl text-themeColor" />

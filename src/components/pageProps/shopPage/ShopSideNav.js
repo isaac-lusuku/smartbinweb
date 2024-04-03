@@ -6,7 +6,7 @@ const ShopSideNav = () => {
   return (
     <div className="w-full  h-full flex flex-col gap-36">
       <Category icons={false} />
-      <SellBanner />
+      {/* <SellBanner /> */}
     </div>
   );
 };

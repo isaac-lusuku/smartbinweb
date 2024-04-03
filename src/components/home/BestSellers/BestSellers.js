@@ -16,7 +16,7 @@ const  shuffleArray = (array) => {
 const catData = shuffleArray(SampleData).slice(0,8)
 const BestSellers = () => {
   return (
-    <div className="w-full py-14">
+    <div data-testid="best-sellers" className="w-full py-14">
       <Heading heading="Our Bestsellers" />
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lgl:grid-cols-3 xl:grid-cols-4 gap-10">
       {catData.map((data) => (

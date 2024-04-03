@@ -5,7 +5,7 @@ import ShopNow from "../../designLayouts/buttons/ShopNow";
 
 const Sale = () => {
   return (
-    <div className="w-full flex items-center h-80 mb-20 bg-[#EEEEEE]  relative font-titleFont rounded-r-full">
+    <div data-testid="sale" className="w-full flex items-center h-80 mb-20 bg-[#EEEEEE]  relative font-titleFont rounded-r-full">
       <div className="text-center h-140 md:h-200 lg:h-260 w-full mx-4 ">
         <div className="mx-8">
           <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6">

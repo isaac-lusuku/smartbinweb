@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Message from "./Message";
 import { Link } from "react-router-dom";
+import axios from "axios";
+// import jwt_decode from "jsonwebtoken";
 
 
 const SignIn = () => {
@@ -31,17 +33,50 @@ const SignIn = () => {
     }
 
     if (!password) {
-      setErrPassword("Create a password");
+      setErrPassword("Enter a password");
     }
     // ============== Getting the value ==============
     if (email && password) {
+      // Make a POST request to obtain access and refresh tokens
+      axios.post('http://127.0.0.1:8000/user/api/token/', {
+          email: email,
+          password: password
+      }, {
+          headers: {'Content-Type': 'application/json'}
+      })
+      .then(response => {
+          // Extract the access and refresh tokens from the response data
+          const data = response.data;
+  
+          // Clear previous tokens and set new ones in local storage
+          localStorage.clear();
+          localStorage.setItem('access_token', data.access);
+          localStorage.setItem('refresh_token', data.refresh);
+
+          const token = data.access;
+          // Decode the token
+          // const decodedToken = jwt_decode(token);
+
+          // console.log(decodedToken); // test the decode
+  
+          // Set the authorization header for Axios requests
+          axios.defaults.headers.common['Authorization'] = `Bearer ${data.access}`;
+  
+      })
+      .catch(error => {
+          // Handle any errors that occur during the request
+          console.error('Error:', error);
+      });
+  
+  
+      
       setSuccessMsg(
         `Validation was successfull, thank you for coming back. We have several new items...check them out`
       );
       setEmail("");
       setPassword("");
     }
-  };
+    };
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <Message page="signin" />

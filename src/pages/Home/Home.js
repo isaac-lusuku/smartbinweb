@@ -9,6 +9,7 @@ import YearProduct from "../../components/home/YearProduct/YearProduct";
 import PopularCategories from "../../components/home/PopularCategories/PopularCategories";
 import StartSelling from "../../components/home/StartSelling/StartSelling";
 
+
 const Home = () => {
   return (
     <div className="w-full mx-auto">
@@ -22,7 +23,9 @@ const Home = () => {
         <Sale />
         <SpecialOffers />
         <StartSelling />
-      </div>
+        </div>
+
+      
     </div>
   );
 };

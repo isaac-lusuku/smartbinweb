@@ -33,7 +33,7 @@ const handleProductDetails = () => {
 
 
   return (
-      <div 
+      <div data-testid="year-product"
           onClick={handleProductDetails}
           className="rounded-l-full w-full h-80 mb-20 bg-[#EEEEEE]  relative font-titleFont">
         <Image

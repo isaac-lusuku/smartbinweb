@@ -8,7 +8,7 @@ const SpecialCase = () => {
   const products = useSelector((state) => state.mainReducer.products);
   return (
     <div className="z-20 hidden md:flex flex-row gap-3 text-black ">
-      <Link to="/signin">
+      <Link to="/profile">
         <div className="bg-white w-16 h-[50px] rounded-md flex flex-col gap-0 justify-center items-center shadow-testShadow overflow-x-hidden group cursor-pointer">
           <div className="flex justify-center items-center ">
             <MdSwitchAccount className="text-2xl -translate-x-12 group-hover:translate-x-3 transition-transform duration-200" />

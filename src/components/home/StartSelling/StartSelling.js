@@ -7,7 +7,7 @@ const StartSelling = () =>{
     }
 
 return(
-    <div className="relative h-[60vh] w-4/5 mx-auto  mb-16 rounded-3xl bg-cover" style={divStyle}>
+    <div  data-testid="start-selling" className="relative h-[60vh] w-4/5 mx-auto  mb-16 rounded-3xl bg-cover" style={divStyle}>
         <div className="relative text-white w-1/2 flex flex-col py-16 p-20 items-center justify-center gap-4 text-center">
             <h1 className="text-4xl font-bold">Start selling <span className="text-themeColor">with us</span> </h1>
             <p className="text-xl text-gray-400">Have been looking for the right opportunity and place to take your business to another level, look no more...what are waiting for, start selling with us TODAY</p>

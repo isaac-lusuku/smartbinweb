@@ -64,7 +64,7 @@ const SpecialOffers = () => {
     ],
   };
   return (
-    <div className="w-full pb-20">
+    <div data-testid="special-offers" className="w-full pb-20">
       <Heading heading="Special Offers- All with free shipping" />
       <Slider {...settings} >
       {catData.map((data) => (

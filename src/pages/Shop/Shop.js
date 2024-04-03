@@ -15,7 +15,7 @@ const Shop = () => {
   return (
     <div className="max-w-container mx-auto px-4">
       <ShopBanner />
-      <ShopBottom />
+      {/* <ShopBottom /> */}
       {/* <Breadcrumbs title="Products" /> */}
       {/* ================= Products Start here =================== */}
       <div className="w-full h-full flex py-20 gap-10 ">

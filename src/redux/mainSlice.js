@@ -7,10 +7,18 @@ const initialState = {
   checkedCategorys: [],
 };
 
+
 export const mainSlice = createSlice({
   name: "main",
   initialState,
   reducers: {
+    addId: (state, action)=>{
+      if (state.userInfo.length() !== 0){
+        state.userInfo = [action.payload.id]
+      }else{
+        state.userInfo = [action.payload.id]
+      }
+    },
     addToCart: (state, action) => {
       const item = state.products.find(
         (item) => item._id === action.payload._id
@@ -55,6 +63,7 @@ export const mainSlice = createSlice({
       // Dispatch a success toast
     },
 
+
     toggleCategory: (state, action) => {
       const category = action.payload;
       const isCategoryChecked = state.checkedCategorys.some(
@@ -73,11 +82,13 @@ export const mainSlice = createSlice({
 });
 
 export const {
+  addId,
   addToCart,
   increaseQuantity,
   drecreaseQuantity,
   deleteItem,
   resetCart,
+  toggleLogIn,
   toggleCategory,
 } = mainSlice.actions;
 export default mainSlice.reducer;

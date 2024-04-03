@@ -61,7 +61,7 @@ const NewArrivals = () => {
     ],
   };
   return (
-    <div className="w-full pb-16">
+    <div data-testid="new-arrivals" className="w-full pb-16">
       <Heading heading="New Arrivals" />
       <Slider {...settings} >
       {catData.map((data) => (

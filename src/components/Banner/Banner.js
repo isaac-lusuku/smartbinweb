@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import Image from "../designLayouts/Image";
 
+
 const CustomSlide = ({ Subtext, imgSrc, text, buttonLink, buttonText }) => (
 <div
   style={{
@@ -113,13 +114,15 @@ const Banner = () => {
 
   ];
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white" data-testid="banner">
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <CustomSlide key={index} {...slide} />
         ))}
       </Slider>
     </div>
+
+
   );
 };
 

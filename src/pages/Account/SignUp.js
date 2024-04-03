@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Message from "./Message";
+import axios from 'axios';
 
 
 const SignUp = () => {
@@ -8,15 +9,18 @@ const SignUp = () => {
   const [clientName, setClientName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [bio, setBio] = useState("")
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
 
   const [errClientName, setErrClientName] = useState("");
   const [errEmail, setErrEmail] = useState("");
   const [errPhone, setErrPhone] = useState("");
+  const [errBio, setErrBio] = useState("")
   const [errPassword, setErrPassword] = useState("");
 
   const [successMsg, setSuccessMsg] = useState("");
+  const [dummyEmail, setDummyEmail] = useState("");
 
   const handleName = (e) => {
     setClientName(e.target.value);
@@ -24,11 +28,16 @@ const SignUp = () => {
   };
   const handleEmail = (e) => {
     setEmail(e.target.value);
+    setDummyEmail(e.target.value);
     setErrEmail("");
   };
   const handlePhone = (e) => {
     setPhone(e.target.value);
     setErrPhone("");
+  };
+  const handleBio = (e) => {
+    setBio(e.target.value);
+    setErrBio("");
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
@@ -42,6 +51,34 @@ const SignUp = () => {
       .match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
   };
 
+
+  const handleProfile = (e) => {
+    e.preventDefault();
+    if (!phone) {
+      setErrPhone("Enter your phone number");
+    }
+    if (!bio) {
+      setErrBio("please write a short bio- anything!");
+    }
+    if (phone && bio){
+      axios.post(
+        'http://127.0.0.1:8000/user/createprofile/',
+        {
+          email: dummyEmail,
+          phone: phone,
+          bio: bio
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      window.location.href = '/signin';
+    }
+
+  }
+
   const handleSignUp = (e) => {
     e.preventDefault();
     if (checked) {
@@ -54,9 +91,6 @@ const SignUp = () => {
         if (!EmailValidation(email)) {
           setErrEmail("Enter a Valid email");
         }
-      }
-      if (!phone) {
-        setErrPhone("Enter your phone number");
       }
       if (!password) {
         setErrPassword("Create a password");
@@ -74,13 +108,35 @@ const SignUp = () => {
         password.length >= 8
       ) {
         setSuccessMsg(
-          `Hello dear ${clientName}, thank you for joining us, hope you enjoy our services, your account will be created after we verify your email at ${email}`
+          `Hello dear ${clientName}, thank you for joining us, your account has been created, pleaase add profile and you can sign in with you email ${email}`
         );
+    
+        axios.post(
+          'http://127.0.0.1:8000/user/create/',
+          {
+            email: email,
+            username: clientName,
+            password: password
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        )
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        
         setClientName("");
         setEmail("");
         setPhone("");
         setPassword("");
-      }
+    }
+    
     }
   };
   return (
@@ -89,17 +145,63 @@ const SignUp = () => {
       <div className="w-full lgl:w-1/2 h-full flex flex-col justify-center  ">
         {successMsg ? (
           <div className="w-[500px]">
-            <p className="w-full px-4 py-10 text-black font-medium font-titleFont">
+            <p className="w-full px-4 py-6 text-black font-medium font-titleFont">
               {successMsg}
             </p>
-            <Link to="/">
-              <button
-                className="w-full h-10 bg-primeColor rounded-md text-gray-200 text-base font-titleFont font-semibold 
-            tracking-wide hover:bg-black hover:text-white duration-300"
-              >
-                __HOME__
-              </button>
-            </Link>
+
+            <form className="w-full lgl:w-[500px] flex items-center justify-center">
+            <div className="px-6 py-4 w-full flex flex-col justify-center ">
+              <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4">
+                Create your profile
+              </h1>
+              <div className="flex flex-col gap-3">
+                {/* client bio */}
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    Your Bio
+                  </p>
+                  <input
+                    onChange={handleBio}
+                    value={bio}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-black outline-none"
+                    type="text"
+                    placeholder="tell us what you like"
+                  />
+                  {errBio && (
+                    <p className="text-sm text-themeColor font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errBio}
+                    </p>
+                  )}
+                </div>
+                {/* Phone Number */}
+                <div className="flex flex-col gap-.5">
+                  <p className="font-titleFont text-base font-semibold text-gray-600">
+                    Phone Number
+                  </p>
+                  <input
+                    onChange={handlePhone}
+                    value={phone}
+                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-black outline-none"
+                    type="text"
+                    placeholder="256751454155"
+                  />
+                  {errPhone && (
+                    <p className="text-sm text-themeColor font-titleFont font-semibold px-4">
+                      <span className="font-bold italic mr-1">!</span>
+                      {errPhone}
+                    </p>
+                  )}
+                </div>
+                <button
+                  onClick={handleProfile}
+                  className="w-full bg-primeColor hover:bg-black  cursor-pointer text-gray-200 text-base font-medium h-10 rounded-md hover:text-white duration-300"
+                >
+                  Create Profile & Sign in
+                </button>
+              </div>
+            </div>
+          </form>
           </div>
         ) : (
           <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center">
@@ -146,25 +248,7 @@ const SignUp = () => {
                     </p>
                   )}
                 </div>
-                {/* Phone Number */}
-                <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Phone Number
-                  </p>
-                  <input
-                    onChange={handlePhone}
-                    value={phone}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-black outline-none"
-                    type="text"
-                    placeholder="256751454155"
-                  />
-                  {errPhone && (
-                    <p className="text-sm text-themeColor font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errPhone}
-                    </p>
-                  )}
-                </div>
+
                 {/* Password */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
