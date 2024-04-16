@@ -62,7 +62,7 @@ const SignUp = () => {
     }
     if (phone && bio){
       axios.post(
-        'http://16.171.47.84/user/createprofile/',
+        'https://51.21.125.104/user/createprofile/',
         {
           email: dummyEmail,
           phone: phone,
@@ -112,7 +112,7 @@ const SignUp = () => {
         );
     
         axios.post(
-          'http://16.171.47.84/user/create/',
+          'https://51.21.125.104/user/create/',
           {
             email: email,
             username: clientName,

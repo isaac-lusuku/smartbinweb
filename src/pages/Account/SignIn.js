@@ -38,7 +38,7 @@ const SignIn = () => {
     // ============== Getting the value ==============
     if (email && password) {
       // Make a POST request to obtain access and refresh tokens
-      axios.post('http://16.171.47.84/user/api/token/', {
+      axios.post('http://51.21.125.104/user/api/token/', {
           email: email,
           password: password
       }, {
