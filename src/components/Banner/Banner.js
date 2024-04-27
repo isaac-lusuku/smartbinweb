@@ -46,7 +46,7 @@ const CustomSlide = ({ Subtext, imgSrc, text, buttonLink, buttonText }) => (
   >
     <h1
       style={{
-        marginBottom: "15px",
+        marginBottom: "20px",
         fontSize: "2.5rem",
         fontWeight: "700",
       }}

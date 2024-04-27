@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Heading from "../Products/Heading";
 import Product from "../Products/Product";
-import { SampleData } from "../../../constants";
 import { useParams } from "react-router-dom";
 import  SampleNextArrow  from "../NewArrivals/SampleNextArrow";
 import  SamplePrevArrow  from "../NewArrivals/SamplePrevArrow";
 import Slider from "react-slick";
+import axios from 'axios';
+
 
 
 const  shuffleArray = (array) => {
@@ -16,13 +17,11 @@ const  shuffleArray = (array) => {
   return array;
 }
 
-const SpecialOffers = () => {
+const SpecialOffers = (props) => {
   const { category } = useParams();
 
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    setData(SampleData);
-  }, [data]);
+  const data = props.items
+
 
   const catData = shuffleArray(data)
   // .filter((item) => item.cat === category);
@@ -70,16 +69,16 @@ const SpecialOffers = () => {
       {catData.map((data) => (
         <div className="p-2">
         <Product 
-            key={data._id}
-            _id={data._id}
-            img={data.img}
-            productName={data.productName}
-            price={data.price}
-            color={data.color}
-            badge={data.badge}
-            des={data.des} 
-            className="p-0"
-          />
+              key={data.id}
+              id={data.id}
+              cat={data.cat}
+              color={data.cat}
+              des={data.des}
+              img={data.img}
+              productName={data.productName}
+              price={data.price}
+              className="p-0"
+            />
         </div>
 
         ))}

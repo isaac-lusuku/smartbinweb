@@ -1,10 +1,10 @@
-import React from "react";
 import Slider from "react-slick";
 import Heading from "../Products/Heading";
 import Product from "../Products/Product";
 import SampleNextArrow from "./SampleNextArrow";
 import SamplePrevArrow from "./SamplePrevArrow";
-import { SampleData } from "../../../constants";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const  shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -14,9 +14,13 @@ const  shuffleArray = (array) => {
   return array;
 }
 
-const catData = shuffleArray(SampleData)
 
-const NewArrivals = () => {
+const NewArrivals = (props) => {
+  const items = props.items
+
+
+  const catData = shuffleArray(items)
+  
   const settings = {
     className: "center",
     centerMode: true,
@@ -67,16 +71,16 @@ const NewArrivals = () => {
       {catData.map((data) => (
         <div className="px-2 pb-2">
         <Product 
-            key={data._id}
-            _id={data._id}
-            img={data.img}
-            productName={data.productName}
-            price={data.price}
-            color={data.color}
-            badge={true}
-            des={data.des} 
-            className="p-0"
-          />
+              key={data.id}
+              id={data.id}
+              cat={data.cat}
+              color={data.cat}
+              des={data.des}
+              img={data.img}
+              productName={data.productName}
+              price={data.price}
+              className="p-0"
+            />
         </div>
 
         ))}

@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const CategoryDsign = ({imgScr, text}) =>{
    return  (<div className="flex flex-col gap-5 h-5/6 justify-center items-center group">
-        <img  className=" w-40 h-40 rounded-full group-hover:brightness-50 duration-700" src={imgScr}/>
-        <p className="font-semibold group-hover:underline underline-offset-4">{text}</p>
+        <img  className=" w-10 h-10 md:w-20 md:h-20 lg:w-30 lg:h-30 xl:w-40 xl:h-40 rounded-full group-hover:brightness-50 duration-700" src={imgScr}/>
+        <p className="text-[5px] md:text-xs lg:text-lg xl:text-xl font-semibold group-hover:underline underline-offset-4">{text}</p>
     </div>)
 }
 

@@ -15,10 +15,10 @@ const text = "Unlock the potential of your products with our online platform! Re
 
 const ShopBanner = () =>{
     return (
-        <div className="h-[68vh] w-full mb-16 rounded-3xl" style={customStyles}>
-            <div className="relative  bg-black top-0 left-0 h-full  text-white w-1/2 rounded-r-full  rounded-l-3xl rounded-t-none flex flex-col py-16 p-20 items-start justify-start gap-4 text-start">
+        <div className="h-[50vh] md:h-[68vh] w-full mb-16 rounded-3xl" style={customStyles}>
+            <div className="relative  bg-black top-0 left-0 h-full  text-white w-1/2 rounded-r-full  rounded-l-3xl rounded-t-none flex flex-col p-10 items-start justify-start gap-4 text-start">
             <div className="w-4/5 ">
-            <div className="text-4xl font-bold">
+            <div className="text-base lg:text-lg xl:text-2xl font-bold">
                 {heading.map((el, i) => (
                     <motion.span
                     initial={{ opacity: 0 }}
@@ -33,7 +33,7 @@ const ShopBanner = () =>{
                     </motion.span>
                 ))}
             </div>
-            <div className="text-2xl font-bold text-themeColor">
+            <div className="text-sm lg:text-base xl:text-xl font-bold text-themeColor">
                 {semiheading.map((el, i) => (
                     <motion.span
                     initial={{ opacity: 0 }}
@@ -48,7 +48,7 @@ const ShopBanner = () =>{
                     </motion.span>
                 ))}
             </div>
-            <div className="text-xl text-gray-400">
+            <div className="hidden md:block text-xs lg:text-sm xl:text-lg text-gray-400">
                 {text.map((el, i) => (
                     <motion.span
                     initial={{ opacity: 0 }}
@@ -71,7 +71,7 @@ const ShopBanner = () =>{
                     delay:6
                 }}
                 key={1}>
-                    <Link to="/sell" className="mt-4 border-2 border-themeColor rounded-2xl text-themeColor h-10 w-36 flex items-center justify-center">
+                    <Link to="/sell" className="mt-4 border-2 border-themeColor rounded-2xl text-themeColor h-5 w-20 text-xs md:h-12 md:w-36 md:text-base flex items-center justify-center">
                         <span>
                                 START NOW
                         </span>

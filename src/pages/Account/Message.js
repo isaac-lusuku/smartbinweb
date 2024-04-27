@@ -1,24 +1,32 @@
-import {react} from "react"
-import { emptyCart } from "../../assets/images";
-import { BsCheckCircleFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { emptyCart } from "../../assets/images";   // Import emptyCart image
+import { BsCheckCircleFill } from "react-icons/bs";   // Import BsCheckCircleFill icon from react-icons
+import { Link } from "react-router-dom";     // Import Link component from React Router
 
+// Defining Message component
 const Message = (props) => {
+  // Function to determine the heading and message based on the page prop
     const handlePage = () =>{
-        if (props.page == "signup"){
+        if (props.page === "signup"){
             return {
                 heading:"Get started for free",
                 message:"Create your account to access more"
             }
         };
-        if (props.page == "signin"){
+        if (props.page === "signin"){
             return {
                 heading:"Stay sign in for more",
                 message:"When you sign in, you are with us!"
             }
         }
+        if (props.page === "register"){
+            return {
+              heading:"Start selling with us",
+              message:"Unlock your businsess' potential by selling with us!"
+          }
+        }
     }
 
+    // JSX CONTENT
 return (
 <div className="w-2/3 hidden lgl:inline-flex h-full text-white rounded-r-[250px]">
     <div className="w-2/3 h-full bg-primeColor px-10 flex flex-col gap-6 justify-center rounded-r-[250px]">
@@ -89,4 +97,4 @@ return (
 }
 
 
-export default Message
+export default Message;

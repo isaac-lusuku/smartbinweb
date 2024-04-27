@@ -18,10 +18,10 @@ const About = () => {
             <span className="text-primeColor font-semibold text-lg">GROUP 21</span>{" "}
             is one of the world's leading ecommerce brands and is internationally
             recognized for celebrating the essence of classic Worldwide cool
-            looking style.
+            looking style and products.
           </h1>
           <Link to="/shop">
-            <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
+            <button className="w-52 h-10 bg-primeColor text-white hover:bg-red-900 duration-300">
               Continue Shopping
             </button>
           </Link>

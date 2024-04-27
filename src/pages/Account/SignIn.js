@@ -1,33 +1,44 @@
-import React, { useState } from "react";
-import Message from "./Message";
-import { Link } from "react-router-dom";
-import axios from "axios";
-// import jwt_decode from "jsonwebtoken";
+import React, { useState } from "react";  // Import necessary modules and hooks
+import Message from "./Message";  // Import Message component
+import { Link, useNavigate } from "react-router-dom";   // Import Link component and useNavigate hook from React Router
+import axios from "axios";    // Import axios for making HTTP requests
+import { jwtDecode } from "jwt-decode";   // Import jwtDecode function for decoding JWT tokens
+import { addId, addCartBoth, updateFavorite } from "../../redux/mainSlice";   // Import action creators from Redux slice
+import { useDispatch, useSelector } from "react-redux";    // Import useDispatch and useSelector hooks from Redux
 
 
+// Define SignIn component
 const SignIn = () => {
+  const navigate = useNavigate()  // Initialize navigate function for navigation
+  const dispatch = useDispatch()  // Initialize dispatch function for dispatching actions
 
-  const [email, setEmail] = useState("");
+
+  const [email, setEmail] = useState("");     
   const [password, setPassword] = useState("");
 
   const [errEmail, setErrEmail] = useState("");
   const [errPassword, setErrPassword] = useState("");
 
-
+  // Select user info from Redux store
+  const id = useSelector((state) => state.mainReducer.userInfo);
   const [successMsg, setSuccessMsg] = useState("");
 
+  // Function to handle email input change
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErrEmail("");
   };
+  // Function to handle password input change
   const handlePassword = (e) => {
     setPassword(e.target.value);
     setErrPassword("");
   };
 
+  // Function to handle sign-in form submission
   const handleSignUp = (e) => {
     e.preventDefault();
 
+     // Validate email and password inputs
     if (!email) {
       setErrEmail("Enter your email");
     }
@@ -36,9 +47,10 @@ const SignIn = () => {
       setErrPassword("Enter a password");
     }
     // ============== Getting the value ==============
+    // If email and password are provided
     if (email && password) {
       // Make a POST request to obtain access and refresh tokens
-      axios.post('http://51.21.125.104/user/api/token/', {
+      axios.post('http://127.0.0.1:8000/user/api/token/', {
           email: email,
           password: password
       }, {
@@ -55,28 +67,81 @@ const SignIn = () => {
 
           const token = data.access;
           // Decode the token
-          // const decodedToken = jwt_decode(token);
+          const decodedToken = jwtDecode(token);
 
-          // console.log(decodedToken); // test the decode
+          // logging all the user information
+          // Dispatch action to store user ID in Redux store
+          dispatch(addId(decodedToken["user_id"]))
+
+          const user_id = decodedToken["user_id"]
+          // CART
+          // Function to fetch and update cart items from server
+          const getCart = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/product/getCart/', { params : {id : user_id}});
+                if (Array.isArray(response.data) && response.data.length !== 0) {
+                  for (let i = 0; i < response.data.length; i++) {
+                    const item = response.data[i]
+                    dispatch(addCartBoth({
+                        id: item['product'],
+                        quantity: item['quantity']
+                    }))
+                  }
+                  
+                } else {
+                  console.log('Response contains no data.');
+                }
+                console.log('Cart info:', response.data);
+            } catch (error) {
+                console.error('Error getting cart info:', error);
+            }
+        };
+
+        // FAVORITES
+         // Function to fetch and update favorite items from server
+        const getFavorites = async () => {
+          try {
+              const response = await axios.get('http://127.0.0.1:8000/product/getFavorites', { params : {id : user_id}});
+
+              if (Array.isArray(response.data) && response.data.length !== 0) {
+                for (let i = 0; i < response.data.length; i++) {
+                  const item = response.data[i]
+                  dispatch(updateFavorite({
+                      id: item['product'],
+                  }))
+                }
+                
+              } else {
+                console.log('Response contains no data.');
+              }
+              console.log('Favorite info:', response.data);
+          } catch (error) {
+              console.error('Error getting favorite info:', error);
+          }
+      };
+          
+      getCart();  // Fetch cart items
+
+      getFavorites();   // Fetch favorite items
   
           // Set the authorization header for Axios requests
           axios.defaults.headers.common['Authorization'] = `Bearer ${data.access}`;
+          navigate("/profile")     // Navigate to profile page
   
       })
       .catch(error => {
           // Handle any errors that occur during the request
           console.error('Error:', error);
+          setSuccessMsg(
+            `Validation was unsuccessfull, the password or email entered are invalid. We have several new items, log in to check them out`
+          );
       });
-  
-  
-      
-      setSuccessMsg(
-        `Validation was successfull, thank you for coming back. We have several new items...check them out`
-      );
       setEmail("");
       setPassword("");
     }
     };
+
+    //JSX CONTENT
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <Message page="signin" />
@@ -86,12 +151,13 @@ const SignIn = () => {
             <p className="w-full px-4 py-10 text-black font-medium font-titleFont">
               {successMsg}
             </p>
-            <Link to="/">
+            <Link to="/signin">
               <button
-                className="w-full h-10 bg-primeColor text-gray-200 rounded-md text-base font-titleFont font-semibold 
+                onClick={()=>setSuccessMsg(null)}
+                className="w-full h-10 bg-red-900 text-gray-200 rounded-md text-base font-titleFont font-semibold 
             tracking-wide hover:bg-black hover:text-white duration-300"
               >
-                __HOME__
+                TRY AGAIN
               </button>
             </Link>
           </div>
@@ -112,7 +178,7 @@ const SignIn = () => {
                     value={email}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="email"
-                    placeholder="john@workemail.com"
+                    placeholder="benjamin@gmail.com"
                   />
                   {errEmail && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -132,7 +198,7 @@ const SignIn = () => {
                     value={password}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="password"
-                    placeholder="Create password"
+                    placeholder="Enter password"
                   />
                   {errPassword && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">

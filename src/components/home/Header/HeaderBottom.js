@@ -41,17 +41,17 @@ const HeaderBottom = () => {
   return (
     <div className="w-full bg-[#F5F5F3] relative bg-opacity-0">
       <div className="max-w-container mx-auto">
-        <Flex className="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full px-4 pb-4 lg:pb-0 h-full lg:h-24">
+        <Flex className="flex  lg:flex-row items-start lg:items-center justify-between w-full px-4 pb-4 lg:pb-0 h-full lg:h-24">
         
         {/* -----------THIS IS THE START SHOPPING BUTTON AND LEADS TO THE SHOPPING PAGE------------ */}
         <Link to="/shop">
-        <div className="flex justify-center items-center h-12  w-60 cursor-pointer items-center gap-2 text-primeColor border-[#EE4266] border-2 rounded-2xl">
+        <div className="flex justify-center m-4 h-8 w-40 lg:h-12  lg:w-60 cursor-pointer items-center gap-2 text-primeColor border-[#EE4266] border-2 rounded-2xl">
             <IoRocket className="w-5 h-5 text-[#EE4266]" />
             <p className="text-[14px] font-normal">START SHOPPING</p>
           </div>
         </Link>
         {/* ------------THE SEARCH BAR-------------- */}
-          <div className="relative  bg-white w-full lg:w-[600px] h-[50px] text-base text-primeColor flex items-center gap-2 justify-between pl-6 pr-2 rounded-xl border-[#EE4266] border-2">
+          <div className="relative  bg-white w-[50vw] m-4 p-1 lg:w-[600px] lg:h-[50px] text-base text-primeColor flex items-center gap-2 justify-between pl-6 pr-2 rounded-xl border-[#EE4266] border-2">
             <input
               className="flex-1 h-full outline-none placeholder:text-[#C4C4C4] placeholder:text-[14px]"
               type="text"
@@ -100,7 +100,7 @@ const HeaderBottom = () => {
                         <p className="text-sm">
                           Price:{" "}
                           <span className="text-primeColor font-semibold">
-                            ${item.price}
+                            UGX{item.price}
                           </span>
                         </p>
                       </div>

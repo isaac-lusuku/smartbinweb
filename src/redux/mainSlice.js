@@ -5,6 +5,7 @@ const initialState = {
   userInfo: [],
   products: [],
   checkedCategorys: [],
+  favorites: [],
 };
 
 
@@ -13,27 +14,43 @@ export const mainSlice = createSlice({
   initialState,
   reducers: {
     addId: (state, action)=>{
-      if (state.userInfo.length() !== 0){
-        state.userInfo = [action.payload.id]
+      if (state.userInfo){
+        state.userInfo = [action.payload]
       }else{
-        state.userInfo = [action.payload.id]
+        state.userInfo = [action.payload]
       }
+    },
+    removeId: (state, action) =>{
+      state.userInfo = [];
     },
     addToCart: (state, action) => {
       const item = state.products.find(
-        (item) => item._id === action.payload._id
+        (item) => item.id === action.payload.id
       );
       if (item) {
-        item.quantity += action.payload.quantity;
+        item.quantity ++;
       } else {
-        state.products.push(action.payload);
+        const product = {id:action.payload.id, quantity:1}
+        state.products.push(product);
       }
+
       // Dispatch a success toast
       toast.success("Product added to cart");
     },
+    addCartBoth: (state, action) =>{
+      const item = state.products.find(
+        (item) => item.id === action.payload.id
+      );
+      if (item) {
+        item.quantity ++;
+      } else {
+        const product = {id:action.payload.id, quantity:action.payload.quantity}
+        state.products.push(product);
+      }
+    },
     increaseQuantity: (state, action) => {
       const item = state.products.find(
-        (item) => item._id === action.payload._id
+        (item) => item.id === action.payload.id
       );
       if (item) {
         item.quantity++;
@@ -42,7 +59,7 @@ export const mainSlice = createSlice({
     },
     drecreaseQuantity: (state, action) => {
       const item = state.products.find(
-        (item) => item._id === action.payload._id
+        (item) => item.id === action.payload.id
       );
       if (item.quantity === 1) {
         item.quantity = 1;
@@ -53,7 +70,7 @@ export const mainSlice = createSlice({
     },
     deleteItem: (state, action) => {
       state.products = state.products.filter(
-        (item) => item._id !== action.payload
+        (item) => item.id !== action.payload
       );
       // Dispatch a success toast
       toast.error("Product removed from cart");
@@ -62,7 +79,42 @@ export const mainSlice = createSlice({
       state.products = [];
       // Dispatch a success toast
     },
+    addToFavorites: (state, action) => {
+      const item = state.favorites.find(
+        (item) => item === action.payload.id
+      );
+      if (item) {
+        toast.error("Product already in favorites")
+      } else {
+        const product_id = action.payload.id
+        state.favorites.push(product_id);
+        // Dispatch a success toast
+        toast.success("Product added to favorites");
+      }      
+    },
+    deleteFavorite: (state, action) => {
+      state.favorites = state.favorites.filter(
+        (item) => item !== action.payload
+      );
+      // Dispatch a success toast
+      toast.error("Product removed from favorites");
+    },
+    updateFavorite: (state, action) => {
+      const item = state.favorites.find(
+        (item) => item === action.payload.id
+      );
+      if (!item) {      
+        const product_id = action.payload.id
+        state.favorites.push(product_id);
+      }
+    },
 
+    resetRedux: (state, action) =>{
+      state.userInfo = [];
+      state.products = [];
+      state.favorites = [];
+      state.checkedCategorys =[];
+    },
 
     toggleCategory: (state, action) => {
       const category = action.payload;
@@ -90,5 +142,11 @@ export const {
   resetCart,
   toggleLogIn,
   toggleCategory,
+  removeId,
+  addToFavorites,
+  deleteFavorite, 
+  resetRedux,
+  addCartBoth,
+  updateFavorite
 } = mainSlice.actions;
 export default mainSlice.reducer;

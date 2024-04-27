@@ -5,6 +5,7 @@ import ProductBanner from "../../components/pageProps/shopPage/ProductBanner";
 import ShopSideNav from "../../components/pageProps/shopPage/ShopSideNav";
 import ShopBanner from "../../components/pageProps/shopPage/shopTop/ShopBanner";
 import ShopBottom from "../../components/pageProps/shopPage/shopTop/ShopBottom";
+import HeaderBottom from "../../components/home/Header/HeaderBottom";
 
 const Shop = () => {
   const [itemsPerPage, setItemsPerPage] = useState(12);
@@ -14,6 +15,7 @@ const Shop = () => {
 
   return (
     <div className="max-w-container mx-auto px-4">
+      <HeaderBottom />
       <ShopBanner />
       {/* <ShopBottom /> */}
       {/* <Breadcrumbs title="Products" /> */}

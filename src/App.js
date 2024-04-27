@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Footer from "./components/home/Footer/Footer";
 import FooterBottom from "./components/home/Footer/FooterBottom";
+import Product from "./components/home/Products/Product";
 import Header from "./components/home/Header/Header";
 import HeaderBottom from "./components/home/Header/HeaderBottom";
 import About from "./pages/About/About";
@@ -22,6 +23,8 @@ import Payment from "./pages/payment/Payment";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Shop from "./pages/Shop/Shop";
 import Sell from "./pages/Sell/sell";
+import AddProduct from "./pages/Sell/addProduct";
+import Register from "./pages/Sell/register";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -41,7 +44,6 @@ const Layout = () => {
         theme="colored"
       />
       <Header />
-      <HeaderBottom />
       <ScrollRestoration />
       <Outlet />
       <Footer />
@@ -58,15 +60,17 @@ const router = createBrowserRouter(
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/sell" element={<Sell />}></Route>
         <Route path="/category/:category" element={<Offer />}></Route>
-        <Route path="/product/:_id" element={<ProductDetails />}></Route>
+        <Route path="/product/:id" element={<ProductDetails />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/paymentgateway" element={<Payment />}></Route>
       </Route>
+      <Route path="/profile" element={<Profile />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
+      <Route path="/register" element={<Register />}></Route>
+      <Route path="/addproduct" element={<AddProduct />}></Route>
+      <Route path="/sell" element={<Sell />}></Route>
     </Route>
   )
 );
