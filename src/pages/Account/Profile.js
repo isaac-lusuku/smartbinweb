@@ -130,7 +130,7 @@ const Profile = () => {
 
     return (
         <div>
-            {loading === false?(
+            {/* {loading === false?( */}
                 <div>
             <Header />
             <div className='w-full flex justify-end items-end'><SpecialCase /></div>
@@ -164,7 +164,7 @@ const Profile = () => {
                         </Link>
                     </div>
                     </motion.div>
-            ):(userData && (
+            ):(loading == false? (
                 <div className='flex w-full justify-center gap-4 my-10 py-10'>
                 <div className="w-4/1 my-10 flex-col  items-end">
                     <div className="aspect-w-1 aspect-h-1 w-72 h-72 relative " >
@@ -227,12 +227,6 @@ const Profile = () => {
 
                 </div>
 
-            ))
-
-            }</div>
-                <Footer />
-                <FooterBottom />
-            </div>
             ):(
             <div className="h-[80vh] w-[100vw] flex justify-center items-center ">
                 <DNA
@@ -244,7 +238,13 @@ const Profile = () => {
                 wrapperClass="dna-wrapper"
                 />
             </div>
-            )}
+            ))
+
+            }</div>
+                <Footer />
+                <FooterBottom />
+            </div>
+            {/* )} */}
         </div>
         
         
