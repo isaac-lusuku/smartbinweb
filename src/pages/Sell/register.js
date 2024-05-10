@@ -101,7 +101,7 @@ const Register = () => {
             deliveryOptions
         ) {
             axios.post(
-            'http://127.0.0.1:8000/business/register_business/',
+            'https://lusukugroup21.online/business/register_business/',
             {
                 email: email,
                 name: name,

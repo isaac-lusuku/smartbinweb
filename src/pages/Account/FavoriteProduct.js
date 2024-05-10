@@ -29,7 +29,7 @@ const FavoriteProduct = (props) => {
       const getProductInfo = async () => {
           try {
               console.log(id)
-              const response = await axios.get('http://127.0.0.1:8000/product/getOne', { params: { id: id } });
+              const response = await axios.get('https://lusukugroup21.online/product/getOne', { params: { id: id } });
               if (response){
                 setLoading(false); // Set loading to false after data is fetched
                 setProductData(response.data);

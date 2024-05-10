@@ -119,7 +119,7 @@ const AddProduct = () => {
 
 
             axios.post(
-            'http://127.0.0.1:8000/product/addProduct/',
+            'https://lusukugroup21.online/product/addProduct/',
             formData,
             {
                 headers: {

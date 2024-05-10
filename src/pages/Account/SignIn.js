@@ -50,7 +50,7 @@ const SignIn = () => {
     // If email and password are provided
     if (email && password) {
       // Make a POST request to obtain access and refresh tokens
-      axios.post('http://127.0.0.1:8000/user/api/token/', {
+      axios.post('https://lusukugroup21.online/user/api/token/', {
           email: email,
           password: password
       }, {
@@ -78,7 +78,7 @@ const SignIn = () => {
           // Function to fetch and update cart items from server
           const getCart = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/product/getCart/', { params : {id : user_id}});
+                const response = await axios.get('https://lusukugroup21.online/product/getCart/', { params : {id : user_id}});
                 if (Array.isArray(response.data) && response.data.length !== 0) {
                   for (let i = 0; i < response.data.length; i++) {
                     const item = response.data[i]
@@ -101,7 +101,7 @@ const SignIn = () => {
          // Function to fetch and update favorite items from server
         const getFavorites = async () => {
           try {
-              const response = await axios.get('http://127.0.0.1:8000/product/getFavorites', { params : {id : user_id}});
+              const response = await axios.get('https://lusukugroup21.online/product/getFavorites', { params : {id : user_id}});
 
               if (Array.isArray(response.data) && response.data.length !== 0) {
                 for (let i = 0; i < response.data.length; i++) {

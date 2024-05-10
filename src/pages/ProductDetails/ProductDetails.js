@@ -26,7 +26,7 @@ const ProductDetails = () =>{
       setPrevLocation(location.pathname);
       const getProductInfo = async () => {
           try {
-              const response = await axios.get('http://127.0.0.1:8000/product/getOne', { params: { id: location.state.item } });
+              const response = await axios.get('https://lusukugroup21.online/product/getOne', { params: { id: location.state.item } });
               if (response){
                 setProductInfo(response.data);
                 console.log('Product info:', response.data);
@@ -50,7 +50,7 @@ const ProductDetails = () =>{
           try {
               console.log(location.state.item);
               // Fetch product data
-              const Response = await axios.get('http://127.0.0.1:8000/product/getOneFull', { params: { id: location.state.item } });
+              const Response = await axios.get('https://lusukugroup21.online/product/getOneFull', { params: { id: location.state.item } });
               if (Response.data) {
                   setBusinessData(Response.data);
                   console.log('Business info:', Response.data);

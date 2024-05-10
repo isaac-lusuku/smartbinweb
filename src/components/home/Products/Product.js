@@ -15,10 +15,6 @@ const Product = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const [loading, setLoading] = useState(true);
-    // const [productData, setProductData] = useState(null);
-    // console.log("prod_before", productData)
-
     const handleProductDetails = () => {
       navigate(`/product/${props.id}`, {
         state: {
@@ -27,33 +23,6 @@ const Product = (props) => {
       });
     };
 
-
-    // const id = props.id
-  //   useEffect(() => {
-  //     console.log("in the effect")
-  //     const getProductInfo = async () => {
-  //         try {
-  //             console.log(id);
-  //             // Fetch product data
-  //             const productResponse = await axios.get('http://127.0.0.1:8000/product/getOne', { params: { id: id } });
-  //             if (productResponse.data) {
-  //                 setProductData(productResponse.data);
-  //                 console.log('Product info:', productResponse.data);
-  //                 setLoading(false)
-  //             }
-  //         } catch (error) {
-  //             console.error('Error getting user info:', error);
-  //         }
-  //     };
-  
-  //     if (id) {
-  //         getProductInfo();
-  //     }
-  // }, [id]); 
-
-  
-
-  // console.log("prod_after", productData)
 
     return (
       <div className="w-full relative group rounded-2xl border-b-[2px] hover:shadow-lg">

@@ -25,7 +25,7 @@ const Cart = () => {
   
       for (let i = 0; i < items.length; i++) {
         try {
-          const response = await axios.get('http://127.0.0.1:8000/product/getOne/', { params: { id: items[i]['id'] } });
+          const response = await axios.get('https://lusukugroup21.online/product/getOne/', { params: { id: items[i]['id'] } });
           prod.push(response.data);
           price += response.data.price * items[i].quantity;
         } catch (error) {
@@ -97,7 +97,9 @@ const Cart = () => {
                 sent to the sellers to contact you about payments and deliveries
               </p>
               
-                <button className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
+                <button 
+                onClick={()=>dispatch(resetCart())}
+                className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
                   CHECKOUT
                 </button>
               

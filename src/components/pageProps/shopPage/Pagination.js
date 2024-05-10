@@ -43,7 +43,7 @@ const Pagination = ({ itemsPerPage }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/product/getProducts/');
+        const response = await axios.get('https://lusukugroup21.online/product/getProducts/');
         setItems(response.data);   // Setting the fetched items in state
       } catch (error) {
         console.error('Error fetching items:', error);

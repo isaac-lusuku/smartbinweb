@@ -24,7 +24,7 @@ const Sell = () => {
         const getUserInfo = async () => {
             try {
                 console.log(id)
-                const response = await axios.get('http://127.0.0.1:8000/business/business_info/', { params: { id: id } });
+                const response = await axios.get('https://lusukugroup21.online/business/business_info/', { params: { id: id } });
                 if (response){
                     setBusinessData(response.data);
                     setLoading(true)

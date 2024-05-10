@@ -20,7 +20,7 @@ const ProductsSold = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/business/businessProducts/", {params:{id : ownerId}});
+      const response = await axios.get("https://lusukugroup21.online/business/businessProducts/", {params:{id : ownerId}});
       if (response.data.length === 0) {
             setHasProducts(false)
       }else{
