@@ -9,7 +9,7 @@ const FooterBottom = () => {
           <span className="text-md mr-[1px] mt-[2px] md:mt-0 text-center hidden md:inline-flex">
             <AiOutlineCopyright />
           </span>
-          Copyright 2024 | <span className="text-themeColor"> GROUP 21 </span> | All Rights Reserved | <span className="text-themeColor">HOPE YOU LIKE OUR FRONTEND</span>
+          Copyright 2024 | <span className="text-themeColor"> GROUP 25 </span> | All Rights Reserved | <span className="text-themeColor">HOPE YOU LIKE OUR FRONTEND</span>
         </p>
       </div>
     </div>
