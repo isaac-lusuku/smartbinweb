@@ -23,20 +23,17 @@ const handleProductDetails = () => {
 
   return (
       <div data-testid="year-product"
-          onClick={handleProductDetails}
-          className="rounded-l-full w-full h-80 mb-20 bg-[#EEEEEE]  relative font-titleFont flex">
+          className="rounded-l-full w-full h-80 mb-20   relative font-titleFont flex">
         <Image
           className="w-5/12 h-full object-cover hidden md:inline-block rounded-l-full"
-          imgSrc={product.img}
+          imgSrc="https://i.pinimg.com/564x/8a/56/38/8a5638b9f717250d4aee366f7f557492.jpg"
         />
-        <div className="w-1/2 md:w-2/3 xl:w-1/2 h-80   pl-20 lg:pl-40 flex flex-col items-start gap-6 justify-center">
-          <h1 className="text-3xl font-semibold text-primeColor">
-            Product of The year
-          </h1>
-          <p className="text-base font-normal text-primeColor  mr-4">
-            {product.des}
+
+        <div className="w-1/2 md:w-2/3 xl:w-1/2 h-80   flex flex-col items-start  justify-center">
+          <h2 class="text-2xl font-bold text-black mb-6 mx-auto ">Automated Waste Segregation:</h2> 
+          <p class="text-xl text-gray-800 leading-relaxed mb-4 w-2/3 mx-auto">
+            Say goodbye to sorting your trash manually. Our Smart Bin uses advanced sensors and AI technology to accurately distinguish between biodegradable and non-biodegradable waste.
           </p>
-          <ShopNow />
         </div>
       </div>
   );

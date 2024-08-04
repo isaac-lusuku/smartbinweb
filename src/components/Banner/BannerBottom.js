@@ -52,7 +52,7 @@ const BannerBottom = () => {
             </svg>
           </span>
           <p className="text-lightText text-base">
-            First month free shipping
+            Free shipping
           </p>
         </div>
         <div className="flex items-center justify-center gap-4 w-72 shadow-sm hover:shadow-md duration-300">
@@ -87,7 +87,7 @@ const BannerBottom = () => {
               ></path>
             </svg>
           </span>
-          <p className="text-lightText text-base">Get notified on new arrivals</p>
+          <p className="text-lightText text-base">Get notified on filling</p>
         </div>
       </div>
     </div>

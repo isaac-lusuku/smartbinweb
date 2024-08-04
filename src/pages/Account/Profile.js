@@ -11,7 +11,6 @@ import { resetRedux } from "../../redux/mainSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Favorites from './Favorites';
 import axios from "axios";
-import SpecialCase from "../../components/SpecialCase/SpecialCase";
 import Header from '../../components/home/Header/Header';
 import Footer from '../../components/home/Footer/Footer';
 import FooterBottom from '../../components/home/Footer/FooterBottom';
@@ -26,9 +25,17 @@ const Profile = () => {
     const userInfo = useSelector((state) => state.mainReducer.userInfo);
     const id = userInfo[0];
     const [loading, setLoading] = useState(true)
+    const [display, setDisplay] = useState(true)
 
     const cartProducts = useSelector((state) => state.mainReducer.products);
     const favorites = useSelector((state) => state.mainReducer.favorites);
+
+    useEffect(() => {
+        var TimeOutFunc = () => {
+            setDisplay(false)
+        }
+        setTimeout(TimeOutFunc, 10000)
+    })
 
 
     useEffect(() => {
@@ -133,7 +140,6 @@ const Profile = () => {
             {/* {loading === false?( */}
                 <div>
             <Header />
-            <div className='w-full flex justify-end items-end'><SpecialCase /></div>
             <div className="h-[90vh] flex items-center justify-center my-20 ">
             {logInStatus === false ? (
                 <motion.div

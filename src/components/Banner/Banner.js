@@ -87,27 +87,27 @@ const Banner = () => {
 
   const slides = [
     {
-      imgSrc: "https://img.freepik.com/fotos-gratis/organizacao-de-diferentes-elementos-de-viagem_23-2148884921.jpg?t=st=1710920065~exp=1710923665~hmac=b6971682a1512e3cc5c3b2ef77a4552b53e5033dceedd3205f614756311a686d&w=1800",
-      text: "Quality Solutions You Everyday Needs",
+      imgSrc: "https://cdn-kepnf.nitrocdn.com/qguMOshktHzrlBnKpznltfRgqPIOwZoi/assets/images/optimized/rev-21f9c49/www.paulsrubbish.com.au/wp-content/uploads/2023/04/pauls_rubbish-2-768x256.jpg",
+      text: "Lets make the world a better place",
       Subtext:
-        "Discover our wide range of electrons and consumables designed for consumer needs.",
-      buttonLink: "/shop",
+        "Join us as we make the world a better place for every creature whether on land or in the waters.",
+      buttonLink: "/about",
       buttonText: "About-us",
     },
     {
-      imgSrc: "https://img.freepik.com/fotos-gratis/ainda-vida-de-homem-casual-acessorios-masculinos-modernos-em-preto_155003-1726.jpg?size=626&ext=jpg&ga=GA1.2.1808718460.1710860225&semt=ais",
-      text: "Enhance Your Shopping Experience",
+      imgSrc: "https://cdn.unenvironment.org/s3fs-public/2017-09/slider2-ietc_0.jpg",
+      text: "Enhance Your Home Experience",
       Subtext:
-        "Explore the world of endless accessibility, dream of it, we have it ",
-      buttonLink: "/shop",
+        "Explore the world of endless sustainability, enhance your home sanitation with our smart bin ",
+      buttonLink: "/about",
       buttonText: "Shop Now",
     },
 
     {
-      imgSrc: "https://img.freepik.com/fotos-gratis/design-de-interiores-minimalista_23-2150870800.jpg?t=st=1710877596~exp=1710881196~hmac=65441728d75e3526802a53fb1b6301a5a62d5fe0c970de5689a6c48534d3e746&w=2000",
+      imgSrc: "https://wwwcdn.imo.org/localresources/en/MediaCentre/HotTopics/PublishingImages/BeatPlasticPollution%20banner.png",
       text: "Efficiency Redefined",
       Subtext:
-        "Maximize productivity with high-quality consumables. ",
+        "Make the waste disposal process more efficient and keep clean and healthy. ",
       buttonLink: "/contact",
       buttonText: "Contact-us",
     },
